@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 import urllib.parse
 
 
-def search_bexar(search_text):
+def search_bexar(search_text, address_text=None):
     results = []
     
     with sync_playwright() as p:
@@ -31,16 +31,27 @@ def search_bexar(search_text):
 
         # Fill search box and press Enter to tokenize
         try:
-            search_input = page.locator('#partyNames-input')
-            search_input.wait_for(state="visible", timeout=5000)
-            search_input.fill(search_text)
-            page.wait_for_timeout(500)
-            page.keyboard.press("Enter")
-            print("Filled tokens")
+            if search_text:
+                search_input = page.locator('#partyNames-input')
+                search_input.wait_for(state="visible", timeout=5000)
+                search_input.fill(search_text)
+                page.wait_for_timeout(500)
+                page.keyboard.press("Enter")
+                print("Filled Name tokens")
         except Exception as e:
             print("Could not fill #partyNames-input", e)
             browser.close()
-            return {"query": search_text, "results": ["Failed to fill search"]}
+            return {"query": search_text, "results": ["Failed to fill name search"]}
+
+        if address_text:
+            try:
+                address_input = page.locator('#propertyAddress')
+                address_input.wait_for(state="visible", timeout=5000)
+                address_input.fill(address_text)
+                page.wait_for_timeout(500)
+                print("Filled Address")
+            except Exception as e:
+                print("Could not fill #propertyAddress", e)
 
         page.wait_for_timeout(1000)
 

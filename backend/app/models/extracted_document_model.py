@@ -15,6 +15,10 @@ class ExtractedDocument(Base):
     recording_date = Column(String)
     document_number = Column(String)
 
+    property_address = Column(String)
+    county = Column(String)
+    firm_file_no = Column(String)
+
     raw_text = Column(Text)
 
     owelty = Column(Boolean, default=False)

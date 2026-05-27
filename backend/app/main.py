@@ -1,4 +1,8 @@
 from fastapi import FastAPI
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from app.api.routes.webhook import router as webhook_router
 from app.api.routes.reports import router as reports_router
 from app.api.routes.upload import router as upload_router

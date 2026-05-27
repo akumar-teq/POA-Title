@@ -49,7 +49,20 @@ def check_county_url(county_name):
         "https://{sub}.tx.publicsearch.us/",
         "https://{sub}countytx.govos.com/",
         "https://{sub}tx.countygovernmentrecords.com/",
-        "https://{sub}.texaslandrecords.com/"
+        "https://{sub}.texaslandrecords.com/",
+        "https://esearch.{sub}.org/",
+        "https://esearch.{sub}.com/",
+        "https://esearch.{sub}county.org/",
+        "https://esearch.{sub}county.com/",
+        "https://esearch.{sub}countytax.com/",
+        "https://esearch.{sub}countytax.org/",
+        "https://esearch.{sub}cad.org/",
+        "https://esearch.{sub}-cad.org/",
+        "https://{sub}cad.org/",
+        "https://{sub}cad.net/",
+        "https://{sub}cad.com/"
+
+
     ]
     
     context = ssl.create_default_context()
